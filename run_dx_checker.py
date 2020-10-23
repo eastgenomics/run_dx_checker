@@ -7,7 +7,7 @@ import datetime
 import subprocess
 import sys
 
-import dxpy as dxpy
+import dxpy
 
 from config import projectID, workflowID, inputs
 from dnanexus_token import AUTH_TOKEN
