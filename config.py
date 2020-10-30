@@ -15,21 +15,21 @@ inputs = {
     },
     "0.reads_fastqgzs": [
         {'$dnanexus_link': {
-            'project': 'project-FxbQ20Q4xq8gxY9x6vkZqZ7F',
+            'project': 'project-Fy9G62Q4gk5784zB9xPpVFJ1',
             'id': 'file-Fxb69184X7kv15p05jKx01P5'
         }},
         {'$dnanexus_link': {
-            'project': 'project-FxbQ20Q4xq8gxY9x6vkZqZ7F',
+            'project': 'project-Fy9G62Q4gk5784zB9xPpVFJ1',
             'id': 'file-Fxb691Q4X7kb53Gp2xXQYX41'
         }}
     ],
     "0.reads2_fastqgzs": [
         {'$dnanexus_link': {
-            'project': 'project-FxbQ20Q4xq8gxY9x6vkZqZ7F',
+            'project': 'project-Fy9G62Q4gk5784zB9xPpVFJ1',
             'id': 'file-Fxb69x04X7kkQgKq8ZqY4F3f'
         }},
         {'$dnanexus_link': {
-            'project': 'project-FxbQ20Q4xq8gxY9x6vkZqZ7F',
+            'project': 'project-Fy9G62Q4gk5784zB9xPpVFJ1',
             'id': 'file-Fxb697j4X7kzQvby05JQGgvj'
         }}
     ],
@@ -37,8 +37,8 @@ inputs = {
         'stage': 'stage-Fy8qp6Q433Gk1p7jF3493gqb',
         'outputField': 'variants_vcf'
     }},
-    "1.truth_vcf": {'$dnanexus_link': {
-        'stage': 'stage-Fy8qp6Q433Gk1p7jF3493gqb',
-        'outputField': 'variants_vcf'
+    "1.truth_vcf": {"$dnanexus_link": {
+        "project": "project-Fy7Jbfj40qQ80zf83PG9G2qK", "id":
+        "file-FyJQ02Q40qQK6Y83Fb7x8gy4"
     }}
 }
