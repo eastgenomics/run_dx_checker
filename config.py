@@ -38,7 +38,7 @@ inputs = {
         'outputField': 'variants_vcf'
     }},
     "1.truth_vcf": {"$dnanexus_link": {
-        "project": "project-Fy7Jbfj40qQ80zf83PG9G2qK", "id":
-        "file-FyJQ02Q40qQK6Y83Fb7x8gy4"
+        "project": "project-Fy9G62Q4gk5784zB9xPpVFJ1", "id":
+        "file-Fy9Fg58448685fV83K24Z8y6"
     }}
 }
