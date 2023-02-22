@@ -10,7 +10,9 @@ To be run weekly to check for any effects of DNAnexus updates.
 
 ## What data are required for this script to run?
 
-This requires the DNAnexus_token.py file to be added to the script dir.
+This requires the config.txt file to be modified by adding a valid DNAnexus token to access the projects specified within config.txt.
+A path to config.txt must be provided as a command line argument when running a docker container for run_dx_checker.
+Example: docker run --env-file <path/to/config.txt> run-dx-checker
 
 ## What does this script output?
 

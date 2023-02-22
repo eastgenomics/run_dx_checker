@@ -9,8 +9,50 @@ import sys
 
 import dxpy
 
-from config import projectID, workflowID, inputs
-from dnanexus_token import AUTH_TOKEN
+# get environment variables
+AUTH_TOKEN = os.environ['AUTH_TOKEN']
+projectID = os.environ['projectID']
+workflowID = os.environ['workflowID']
+
+inputs = {
+    "0.genomebwaindex_targz": {
+        '$dnanexus_link': {
+            'project': os.environ['genomebwaindex_targz_projectID'],
+            'id': os.environ['genomebwaindex_targz_fileID']
+        }
+    },
+    "0.genome_fastagz": {
+        '$dnanexus_link': os.environ['genome_fastagz_fileID']
+    },
+    "0.reads_fastqgzs": [
+        {'$dnanexus_link': {
+            'project': os.environ['reads_fastqgzs_projectID'],
+            'id': os.environ['reads_fastqgzs_1_fileID']
+        }},
+        {'$dnanexus_link': {
+            'project': os.environ['reads_fastqgzs_projectID'],
+            'id': os.environ['reads_fastqgzs_2_fileID']
+        }}
+    ],
+    "0.reads2_fastqgzs": [
+        {'$dnanexus_link': {
+            'project': os.environ['reads_fastqgzs_projectID'],
+            'id': os.environ['reads2_fastqgzs_1_fileID']
+        }},
+        {'$dnanexus_link': {
+            'project': os.environ['reads_fastqgzs_projectID'],
+            'id': os.environ['reads2_fastqgzs_2_fileID']
+        }}
+    ],
+    "1.query_vcf": {'$dnanexus_link': {
+        'stage': os.environ['query_vcf_stageID'],
+        'outputField': 'variants_vcf'
+    }},
+    "1.truth_vcf": {"$dnanexus_link": {
+        "project": os.environ['reads_fastqgzs_projectID'], 
+        "id": os.environ['truth_vcf_fileID']
+    }}
+}
 
 
 def get_date():
