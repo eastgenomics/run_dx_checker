@@ -101,6 +101,8 @@ def main():
     # run workflow
     run_check(out_dir)
 
+    print("run_dx_checker.py has completed running")
+
 
 if __name__ == "__main__":
     main()
