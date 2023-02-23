@@ -6,51 +6,52 @@ monitor for any effects of weekly DNAnexus updates"""
 import datetime
 import subprocess
 import sys
+import os
 
 import dxpy
 
 # get environment variables
 AUTH_TOKEN = os.environ['AUTH_TOKEN']
-projectID = os.environ['projectID']
-workflowID = os.environ['workflowID']
+projectID = os.environ['PROJECT_ID']
+workflowID = os.environ['WORKFLOW_ID']
 
 inputs = {
     "0.genomebwaindex_targz": {
         '$dnanexus_link': {
-            'project': os.environ['genomebwaindex_targz_projectID'],
-            'id': os.environ['genomebwaindex_targz_fileID']
+            'project': os.environ['GENOME_BWAINDEX_TARGZ_PROJECT_ID'],
+            'id': os.environ['GENOME_BWAINDEX_TARGZ_FILE_ID']
         }
     },
     "0.genome_fastagz": {
-        '$dnanexus_link': os.environ['genome_fastagz_fileID']
+        '$dnanexus_link': os.environ['GENOME_FASTAGZ_FILE_ID']
     },
     "0.reads_fastqgzs": [
         {'$dnanexus_link': {
-            'project': os.environ['reads_fastqgzs_projectID'],
-            'id': os.environ['reads_fastqgzs_1_fileID']
+            'project': os.environ['READS_FASTQGZS_PROJECT_ID'],
+            'id': os.environ['READS_FASTQGZS_1_FILE_ID']
         }},
         {'$dnanexus_link': {
-            'project': os.environ['reads_fastqgzs_projectID'],
-            'id': os.environ['reads_fastqgzs_2_fileID']
+            'project': os.environ['READS_FASTQGZS_PROJECT_ID'],
+            'id': os.environ['READS_FASTQGZS_2_FILE_ID']
         }}
     ],
     "0.reads2_fastqgzs": [
         {'$dnanexus_link': {
-            'project': os.environ['reads_fastqgzs_projectID'],
-            'id': os.environ['reads2_fastqgzs_1_fileID']
+            'project': os.environ['READS_FASTQGZS_PROJECT_ID'],
+            'id': os.environ['READS2_FASTQGZS_1_FILE_ID']
         }},
         {'$dnanexus_link': {
-            'project': os.environ['reads_fastqgzs_projectID'],
-            'id': os.environ['reads2_fastqgzs_2_fileID']
+            'project': os.environ['READS_FASTQGZS_PROJECT_ID'],
+            'id': os.environ['READS2_FASTQGZS_2_FILE_ID']
         }}
     ],
     "1.query_vcf": {'$dnanexus_link': {
-        'stage': os.environ['query_vcf_stageID'],
+        'stage': os.environ['QUERY_VCF_STAGE_ID'],
         'outputField': 'variants_vcf'
     }},
     "1.truth_vcf": {"$dnanexus_link": {
-        "project": os.environ['reads_fastqgzs_projectID'], 
-        "id": os.environ['truth_vcf_fileID']
+        "project": os.environ['READS_FASTQGZS_PROJECT_ID'], 
+        "id": os.environ['TRUTH_VCF_FILE_ID']
     }}
 }
 
