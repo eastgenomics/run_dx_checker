@@ -6,11 +6,54 @@ monitor for any effects of weekly DNAnexus updates"""
 import datetime
 import subprocess
 import sys
+import os
 
 import dxpy
 
-from config import projectID, workflowID, inputs
-from dnanexus_token import AUTH_TOKEN
+# get environment variables
+AUTH_TOKEN = os.environ['AUTH_TOKEN']
+projectID = os.environ['PROJECT_ID']
+workflowID = os.environ['WORKFLOW_ID']
+
+inputs = {
+    "0.genomebwaindex_targz": {
+        '$dnanexus_link': {
+            'project': os.environ['GENOME_BWAINDEX_TARGZ_PROJECT_ID'],
+            'id': os.environ['GENOME_BWAINDEX_TARGZ_FILE_ID']
+        }
+    },
+    "0.genome_fastagz": {
+        '$dnanexus_link': os.environ['GENOME_FASTAGZ_FILE_ID']
+    },
+    "0.reads_fastqgzs": [
+        {'$dnanexus_link': {
+            'project': os.environ['READS_FASTQGZS_PROJECT_ID'],
+            'id': os.environ['READS_FASTQGZS_1_FILE_ID']
+        }},
+        {'$dnanexus_link': {
+            'project': os.environ['READS_FASTQGZS_PROJECT_ID'],
+            'id': os.environ['READS_FASTQGZS_2_FILE_ID']
+        }}
+    ],
+    "0.reads2_fastqgzs": [
+        {'$dnanexus_link': {
+            'project': os.environ['READS_FASTQGZS_PROJECT_ID'],
+            'id': os.environ['READS2_FASTQGZS_1_FILE_ID']
+        }},
+        {'$dnanexus_link': {
+            'project': os.environ['READS_FASTQGZS_PROJECT_ID'],
+            'id': os.environ['READS2_FASTQGZS_2_FILE_ID']
+        }}
+    ],
+    "1.query_vcf": {'$dnanexus_link': {
+        'stage': os.environ['QUERY_VCF_STAGE_ID'],
+        'outputField': 'variants_vcf'
+    }},
+    "1.truth_vcf": {"$dnanexus_link": {
+        "project": os.environ['READS_FASTQGZS_PROJECT_ID'], 
+        "id": os.environ['TRUTH_VCF_FILE_ID']
+    }}
+}
 
 
 def get_date():
@@ -57,6 +100,8 @@ def main():
 
     # run workflow
     run_check(out_dir)
+
+    print("run_dx_checker.py has completed running")
 
 
 if __name__ == "__main__":
